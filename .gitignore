@@ -12,3 +12,6 @@ src/audio/*.wav
 
 # PyCharm settings
 .idea
+
+#audio device text file
+audios.txt
