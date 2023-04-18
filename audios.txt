@@ -1,0 +1,80 @@
+0: Microsoft Sound Mapper - Input
+1: CABLE Output (VB-Audio Virtual 
+2: VoiceMeeter Output (VB-Audio Vo
+3: Microphone (Virtual Desktop Aud
+4: Microphone (Realtek(R) Audio)
+5: Microphone (Pico Streaming Virt
+6: Microphone (3- USB Advanced Aud
+7: Microphone (Steam Streaming Mic
+8: VoiceMeeter Aux Output (VB-Audi
+9: Microphone (Screaming Bee Audio
+10: Microphone (Voicemod Virtual Au
+11: Microsoft Sound Mapper - Output
+12: VoiceMeeter Input (VB-Audio Voi
+13: Speakers (Realtek(R) Audio)
+14: Speakers (Steam Streaming Micro
+15: VoiceMeeter Aux Input (VB-Audio
+16: Line (Voicemod Virtual Audio De
+17: Speakers (Steam Streaming Speak
+18: Speakers (3- USB Advanced Audio
+19: CABLE Input (VB-Audio Virtual C
+20: Primary Sound Capture Driver
+21: CABLE Output (VB-Audio Virtual Cable)
+22: VoiceMeeter Output (VB-Audio VoiceMeeter VAIO)
+23: Microphone (Virtual Desktop Audio)
+24: Microphone (Realtek(R) Audio)
+25: Microphone (Pico Streaming Virtual Audio)
+26: Microphone (3- USB Advanced Audio Device)
+27: Microphone (Steam Streaming Microphone)
+28: VoiceMeeter Aux Output (VB-Audio VoiceMeeter AUX VAIO)
+29: Microphone (Screaming Bee Audio)
+30: Microphone (Voicemod Virtual Audio Device (WDM))
+31: Primary Sound Driver
+32: VoiceMeeter Input (VB-Audio VoiceMeeter VAIO)
+33: Speakers (Realtek(R) Audio)
+34: Speakers (Steam Streaming Microphone)
+35: VoiceMeeter Aux Input (VB-Audio VoiceMeeter AUX VAIO)
+36: Line (Voicemod Virtual Audio Device (WDM))
+37: Speakers (Steam Streaming Speakers)
+38: Speakers (3- USB Advanced Audio Device)
+39: CABLE Input (VB-Audio Virtual Cable)
+40: Speakers (Realtek(R) Audio)
+41: Speakers (Steam Streaming Microphone)
+42: VoiceMeeter Aux Input (VB-Audio VoiceMeeter AUX VAIO)
+43: Line (Voicemod Virtual Audio Device (WDM))
+44: Speakers (Steam Streaming Speakers)
+45: VoiceMeeter Input (VB-Audio VoiceMeeter VAIO)
+46: Speakers (3- USB Advanced Audio Device)
+47: CABLE Input (VB-Audio Virtual Cable)
+48: VoiceMeeter Output (VB-Audio VoiceMeeter VAIO)
+49: Microphone (Virtual Desktop Audio)
+50: Microphone (Realtek(R) Audio)
+51: Microphone (Pico Streaming Virtual Audio)
+52: Microphone (3- USB Advanced Audio Device)
+53: CABLE Output (VB-Audio Virtual Cable)
+54: Microphone (Steam Streaming Microphone)
+55: VoiceMeeter Aux Output (VB-Audio VoiceMeeter AUX VAIO)
+56: Microphone (Screaming Bee Audio)
+57: Microphone (Voicemod Virtual Audio Device (WDM))
+58: VoiceMeeter Aux Output (VoiceMeeter Aux vaio)
+59: Speakers (VoiceMeeter Aux vaio)
+60: Microphone (Voicemod VAD Wave)
+61: Line Out (Voicemod VAD Wave)
+62: CABLE Output (VB-Audio Point)
+63: Speakers (VB-Audio Point)
+64: Stereo Mix (Realtek HD Audio Stereo input)
+65: Speakers (Realtek HD Audio output)
+66: Microphone (Realtek HD Audio Mic input)
+67: Microphone (Screaming Bee Wave)
+68: Microphone (Steam Streaming Microphone Wave)
+69: Speakers (Steam Streaming Microphone Wave)
+70: Speakers (USB Advanced Audio Device)
+71: Microphone (USB Advanced Audio Device)
+72: Microphone ()
+73: Output ()
+74: Input (Steam Streaming Speakers Wave)
+75: Speakers (Steam Streaming Speakers Wave)
+76: Microphone (VDVAD Wave)
+77: Speakers (VDVAD Wave)
+78: VoiceMeeter Output (VoiceMeeter vaio)
+79: Speakers (VoiceMeeter vaio)

@@ -28,7 +28,7 @@ LOGGING = getenv('LOGGING', 'False').lower() in ('true', '1', 't')
 MIC_AUDIO_PATH = Path(__file__).resolve().parent / r'audio/mic.wav'
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
-KATA = getenv('USE_KATA')
+KATA = getenv('KATA')
 
 def replaceSpaces(string):
     return string.replace(" ", "+")
