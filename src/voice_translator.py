@@ -13,6 +13,10 @@ from dotenv import load_dotenv
 from modules.asr import speech_to_text
 from modules.tts import speak
 
+# 英語→カタカナ変換機(https://www.sljfaq.org/cgi/e2k_ja.cgi)からスクレイピング
+import urllib
+from bs4 import BeautifulSoup
+
 load_dotenv()
 
 USE_DEEPL = getenv('USE_DEEPL', 'False').lower() in ('true', '1', 't')
@@ -24,7 +28,22 @@ LOGGING = getenv('LOGGING', 'False').lower() in ('true', '1', 't')
 MIC_AUDIO_PATH = Path(__file__).resolve().parent / r'audio/mic.wav'
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
+KATA = getenv('USE_KATA')
 
+def replaceSpaces(string):
+    return string.replace(" ", "+")
+
+def english_to_katakana(word):
+    url = 'https://www.sljfaq.org/cgi/e2k_ja.cgi'
+    url_q = url + '?word=' + replaceSpaces(word)
+    headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0'}
+
+    request = urllib.request.Request(url_q, headers=headers)
+    html = urllib.request.urlopen(request)
+    soup = BeautifulSoup(html, 'html.parser')
+    katakana_string = soup.find_all(class_='katakana-string')[0].string.replace('\ ', '').replace('・', '')
+
+    return katakana_string
 
 def on_press_key(_):
     global frames, recording, stream
@@ -70,6 +89,8 @@ def on_release_key(_):
 
         if USE_DEEPL:
             translated_speech = translator.translate_text(eng_speech, target_lang=TARGET_LANGUAGE)
+        elif KATA:
+            translated_speech = english_to_katakana(eng_speech)
         else:
             translated_speech = translator.translate(eng_speech, dest=TARGET_LANGUAGE).text
 
@@ -98,6 +119,8 @@ if __name__ == '__main__':
     # Set DeepL or Google Translator
     if USE_DEEPL:
         translator = deepl.Translator(DEEPL_AUTH_KEY)
+    elif KATA:
+        translator = "Kata lol"
     else:
         translator = googletrans.Translator()
 
