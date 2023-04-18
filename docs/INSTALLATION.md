@@ -13,7 +13,7 @@ If possible, you should run these 2 on another server either on your local netwo
 
 Run this command to clone this entire repository.
 
-```git clone https://github.com/SociallyIneptWeeb/LanguageLeapAI```
+```git clone https://github.com/QuackGameDev/LanguageLeapAI```
 
 Run the following command in the root folder to install the required python dependencies.
 

@@ -128,12 +128,14 @@ if __name__ == '__main__':
     keyboard.on_release_key(RECORD_KEY, on_release_key)
 
     try:
-        while True:
-            if recording and stream:
-                data = stream.read(CHUNK)
-                frames.append(data)
-            else:
-                sleep(0.5)
-
+        try:
+            while True:
+                if recording and stream:
+                    data = stream.read(CHUNK)
+                    frames.append(data)
+                else:
+                    sleep(0.5)
+        except:
+            print("crashed for some reason")
     except KeyboardInterrupt:
         print('Closing voice translator.')
