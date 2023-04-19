@@ -1,4 +1,4 @@
-import wave
+﻿import wave
 from os import getenv
 from pathlib import Path
 from time import sleep
@@ -13,11 +13,12 @@ from dotenv import load_dotenv
 from modules.asr import speech_to_text
 from modules.tts import speak
 
+# 英語→カタカナ変換機(https://www.sljfaq.org/cgi/e2k_ja.cgi)からスクレイピング
+import urllib
+from bs4 import BeautifulSoup
 
 load_dotenv()
 
-USE_DEEPL = getenv('USE_DEEPL', 'False').lower() in ('true', '1', 't')
-DEEPL_AUTH_KEY = getenv('DEEPL_AUTH_KEY')
 TARGET_LANGUAGE = getenv('TARGET_LANGUAGE_CODE')
 MIC_ID = int(getenv('MICROPHONE_ID'))
 RECORD_KEY = getenv('MIC_RECORD_KEY')
@@ -29,6 +30,18 @@ FORMAT = pyaudio.paInt16
 
 def replaceSpaces(string):
     return string.replace(" ", "+")
+
+def english_to_katakana(word):
+    url = 'https://www.sljfaq.org/cgi/e2k_ja.cgi'
+    url_q = url + '?word=' + replaceSpaces(word)
+    headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0'}
+
+    request = urllib.request.Request(url_q, headers=headers)
+    html = urllib.request.urlopen(request)
+    soup = BeautifulSoup(html, 'html.parser')
+    katakana_string = soup.find_all(class_='katakana-string')[0].string.replace('\ ', '').replace('・', '')
+
+    return katakana_string
 
 def on_press_key(_):
     global frames, recording, stream
@@ -72,10 +85,8 @@ def on_release_key(_):
 
     if eng_speech:
 
-        if USE_DEEPL:
-            translated_speech = translator.translate_text(eng_speech, target_lang=TARGET_LANGUAGE)
-        else:
-            translated_speech = translator.translate(eng_speech, dest=TARGET_LANGUAGE).text
+        translated_speech = english_to_katakana(eng_speech)
+
 
         if LOGGING:
             print(f'English: {eng_speech}')
@@ -98,13 +109,6 @@ if __name__ == '__main__':
     frames = []
     recording = False
     stream = None
-
-    # Set DeepL or Google Translator
-    if USE_DEEPL:
-        translator = deepl.Translator(DEEPL_AUTH_KEY)
-
-    else:
-        translator = googletrans.Translator()
 
     keyboard.on_press_key(RECORD_KEY, on_press_key)
     keyboard.on_release_key(RECORD_KEY, on_release_key)
