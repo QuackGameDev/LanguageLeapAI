@@ -31,7 +31,7 @@ FORMAT = pyaudio.paInt16
 def replaceSpaces(string):
     return string.replace(" ", "+")
 
-def english_to_katakana(word):
+def english_to_katakana(word, question):
     url = 'https://www.sljfaq.org/cgi/e2k_ja.cgi'
     url_q = url + '?word=' + replaceSpaces(word)
     headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0'}
@@ -40,7 +40,8 @@ def english_to_katakana(word):
     html = urllib.request.urlopen(request)
     soup = BeautifulSoup(html, 'html.parser')
     katakana_string = soup.find_all(class_='katakana-string')[0].string.replace('\ ', '').replace('・', '')
-
+    if question:
+        katakana_string = katakana_string + '?'
     return katakana_string
 
 def on_press_key(_):
@@ -83,9 +84,12 @@ def on_release_key(_):
         print('Too many requests to process at once')
         return
 
-    if eng_speech:
+    question = False
 
-        translated_speech = english_to_katakana(eng_speech)
+    if eng_speech:
+        if '?' in eng_speech:
+            question = True
+        translated_speech = english_to_katakana(eng_speech, question)
 
 
         if LOGGING:
